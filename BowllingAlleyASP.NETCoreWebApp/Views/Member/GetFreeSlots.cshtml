@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BowllingAlleyASP.NETCoreWebApp.Models.BookingSlots>
+
+@{
+    ViewData["Title"] = "GetFreeSlots";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+<h6>Type of User: Member</h6>
+
+<h1>Free Slots</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SlotEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SlotId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SlotStartTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SlotEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SlotId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SlotStartTime)
+            </td>
+            <td>
+                @Html.ActionLink("Book Slot", "BookSlot", item) 
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

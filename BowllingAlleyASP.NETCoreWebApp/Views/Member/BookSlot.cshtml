@@ -1,0 +1,52 @@
+﻿@model BowllingAlleyASP.NETCoreWebApp.Models.BookingSlots
+
+
+@{
+    ViewData["Title"] = "BookSlot";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+<h6>Type of User:Member</h6>
+<h1>Book Slot</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="ConfirmBooking">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="form-group">
+                <label asp-for="SlotId" class="control-label"></label>
+                <input asp-for="SlotId" class="form-control" readonly/>
+                <span asp-validation-for="SlotId" class="text-danger"></span>
+            </div>
+         
+
+            <div class="form-group">
+                <label asp-for="SlotStartTime" class="control-label"></label>
+                <input asp-for="SlotStartTime" class="form-control" readonly />
+                <span asp-validation-for="SlotStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotEndTime" class="control-label"></label>
+                <input asp-for="SlotEndTime" class="form-control" readonly />
+                <span asp-validation-for="SlotEndTime" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label class="control-label">EmpId</label>
+                 <input type="text" id="EmpId" name="EmpId" class="form-control"><br><br>
+            </div>
+            <div class="form-group" asp-route-SlotId = "@Model.SlotId" asp-rout-empId = "EmpId"  >
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
